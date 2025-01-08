@@ -33,7 +33,7 @@ SELECT CONCAT(LEFT(first_name, LENGTH(first_name)/2 - 1),
 FROM customer
 WHERE LENGTH(first_name)%2 = 0;
 
--- for names with even length
+-- for names with odd length
 SELECT CONCAT(LEFT(first_name, LENGTH(first_name)/2 ),
                '*',
            RIGHT(first_name, LENGTH(first_name)/2)), first_name
