@@ -40,8 +40,20 @@ SELECT CONCAT(LEFT(first_name, LENGTH(first_name)/2 ),
 FROM customer
 WHERE LENGTH(first_name)%2 = 1;
 
-
 --SOLUTION
+SELECT first_name,
+       CASE
+           WHEN LENGTH(first_name)%2 = 0 THEN CONCAT(LEFT(first_name, LENGTH(first_name)/2 - 1),
+                   '**',
+               RIGHT(first_name, LENGTH(first_name)/2 - 1))
+           ELSE CONCAT(LEFT(first_name, LENGTH(first_name)/2 ),
+                   '*',
+               RIGHT(first_name, LENGTH(first_name)/2))
+           END
+FROM customer;
+
+
+--SOLUTION (When I haven't looked at the hint xD)
 
 SELECT CONCAT(LEFT(first_name, LENGTH(first_name)/2 - 1 + LENGTH(first_name)%2),
                REPEAT('*',ABS(LENGTH(first_name)%2-2)),
