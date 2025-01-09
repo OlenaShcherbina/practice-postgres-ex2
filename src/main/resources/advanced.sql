@@ -79,3 +79,8 @@ WHERE first_name != SUBSTRING(email FROM 1 FOR POSITION('.' IN email)-1)
 OR
     last_name != SUBSTRING(email FROM POSITION('.' IN email)+1 FOR POSITION('@' IN email)-1-POSITION('.' IN email));
 
+--OR
+
+SELECT email FROM customer
+WHERE email NOT LIKE CONCAT(first_name, '.', last_name, '@_%._%');
+
